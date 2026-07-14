@@ -15,7 +15,21 @@ function obtenerTodos() {
     return clientes;
 }
 
+// Crear un nuevo cliente
+function crear(cliente) {
+
+    const nuevoCliente = {
+        id: clientes.length + 1,
+        nombre: cliente.nombre
+    };
+
+    clientes.push(nuevoCliente);
+
+    return nuevoCliente;
+}
+
 // Exportamos las funciones del modelo
 export default {
-    obtenerTodos
+    obtenerTodos,
+    crear
 };

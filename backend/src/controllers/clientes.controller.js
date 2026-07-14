@@ -1,15 +1,8 @@
+import clientesModel from "../models/clientes.model.js";
+
 export const obtenerClientes = (req, res) => {
 
-    const clientes = [
-        {
-            id: 1,
-            nombre: "Empresa ABC"
-        },
-        {
-            id: 2,
-            nombre: "Ferretería Central"
-        }
-    ];
+    const clientes = clientesModel.obtenerTodos();
 
     res.json(clientes);
 
@@ -19,9 +12,11 @@ export const crearCliente = (req, res) => {
 
     const cliente = req.body;
 
+    const nuevoCliente = clientesModel.crear(cliente);
+
     res.json({
-        mensaje: "Cliente recibido correctamente",
-        cliente: cliente
+        mensaje: "Cliente creado correctamente",
+        cliente: nuevoCliente
     });
 
 };
