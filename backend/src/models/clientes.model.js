@@ -1,31 +1,20 @@
-// Arreglo temporal donde almacenaremos los clientes
-let clientes = [
-    {
-        id: 1,
-        nombre: "Empresa ABC"
-    },
-    {
-        id: 2,
-        nombre: "Ferretería Central"
-    }
-];
+// Modelo de clientes con persistencia en SQLite
+import db from "../database/conexion.js";
 
 // Obtener todos los clientes
 function obtenerTodos() {
-    return clientes;
+    return db.prepare("SELECT * FROM clientes ORDER BY id").all();
 }
 
 // Crear un nuevo cliente
 function crear(cliente) {
 
-    const nuevoCliente = {
-        id: clientes.length + 1,
+    const resultado = db.prepare("INSERT INTO clientes (nombre) VALUES (?)").run(cliente.nombre);
+
+    return {
+        id: resultado.lastInsertRowid,
         nombre: cliente.nombre
     };
-
-    clientes.push(nuevoCliente);
-
-    return nuevoCliente;
 }
 
 // Exportamos las funciones del modelo

@@ -24,3 +24,11 @@
 - Se creó `backend/src/routes/cotizaciones.routes.js` con GET y POST en `/cotizaciones`.
 - Se conectó el módulo en `backend/src/app.js` sin modificar el módulo de clientes.
 - Verificación funcional: GET /clientes devuelve 2 clientes, GET /cotizaciones devuelve arreglo, POST /cotizaciones calcula total 4640 correctamente.
+
+### Fase 2: Persistencia con SQLite
+
+- Se instaló `better-sqlite3@13.0.3` como conector SQLite síncrono y simple.
+- Se creó `backend/src/database/conexion.js` que crea `cotizaciones.db` con tablas `clientes` y `cotizaciones` e inserta 2 clientes de ejemplo si está vacío.
+- Se migró `clientes.model.js` de arreglo en memoria a `SELECT` e `INSERT` con placeholders `?`.
+- Se migró `cotizaciones.model.js` conservando cálculo map/reduce + IVA 16%, guardando `items` como JSON y usando `AUTOINCREMENT`.
+- Verificación funcional: tras reiniciar el servidor, GET /cotizaciones conserva la cotización id 1 con total 4640. La BD local `*.db` no se sube a Git.
