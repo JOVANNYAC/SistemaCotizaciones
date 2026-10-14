@@ -1,5 +1,6 @@
 import express from "express";
 import clientesRoutes from "./routes/clientes.routes.js";
+import cotizacionesRoutes from "./routes/cotizaciones.routes.js";
 
 const app = express();
 
@@ -7,6 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/clientes", clientesRoutes);
+app.use("/cotizaciones", cotizacionesRoutes);
 
 const PORT = 3000;
 
