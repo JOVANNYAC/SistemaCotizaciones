@@ -14,3 +14,13 @@
 - Se conectó el repositorio local con GitHub mediante `origin`.
 - Se realizó el primer `git push`.
 - La rama `main` quedó enlazada con `origin/main`.
+
+## 2026-10-14
+
+### Fase 1: Módulo de cotizaciones en memoria
+
+- Se creó `backend/src/models/cotizaciones.model.js` con arreglo temporal y cálculo automático de subtotal, IVA 16% y total.
+- Se creó `backend/src/controllers/cotizaciones.controller.js` con validación de clienteId e items y respuestas 201/400.
+- Se creó `backend/src/routes/cotizaciones.routes.js` con GET y POST en `/cotizaciones`.
+- Se conectó el módulo en `backend/src/app.js` sin modificar el módulo de clientes.
+- Verificación funcional: GET /clientes devuelve 2 clientes, GET /cotizaciones devuelve arreglo, POST /cotizaciones calcula total 4640 correctamente.
