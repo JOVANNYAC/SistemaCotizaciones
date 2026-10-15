@@ -14,9 +14,24 @@ const db = new Database(rutaBD);
 db.exec(`
     CREATE TABLE IF NOT EXISTS clientes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT NOT NULL
+        nombre TEXT NOT NULL,
+        telefono TEXT DEFAULT '',
+        email TEXT DEFAULT '',
+        direccion TEXT DEFAULT ''
     )
 `);
+
+// Migración simple: agregar columnas si la tabla ya existía solo con nombre
+const columnas = db.prepare("PRAGMA table_info(clientes)").all().map((c) => c.name);
+if (!columnas.includes("telefono")) {
+    db.exec("ALTER TABLE clientes ADD COLUMN telefono TEXT DEFAULT ''");
+}
+if (!columnas.includes("email")) {
+    db.exec("ALTER TABLE clientes ADD COLUMN email TEXT DEFAULT ''");
+}
+if (!columnas.includes("direccion")) {
+    db.exec("ALTER TABLE clientes ADD COLUMN direccion TEXT DEFAULT ''");
+}
 
 // Crear tabla cotizaciones si no existe
 // items se guarda como texto JSON porque SQLite no tiene tipo arreglo

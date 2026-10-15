@@ -48,3 +48,11 @@
 - Se creó `frontend/app.js` con fetch a /clientes, /cotizaciones y descarga de PDF.
 - Se sirvió frontend desde Express con `express.static` sin romper la API.
 - Verificación funcional: http://localhost:3000/ muestra formulario e historial. Diseño pendiente de adaptación futura.
+
+### Fase 5: Módulo completo de clientes
+
+- Se amplió tabla `clientes` a `nombre, telefono, email, direccion` con migración automática ALTER TABLE.
+- Se agregó `actualizar` en modelo con `UPDATE ... WHERE id = ?` y validación de nombre en controlador.
+- Se expuso `PUT /clientes/:id` para editar con 400/404, y `POST` ahora devuelve 201.
+- Se creó `frontend/clientes.html` y `frontend/clientes.js` con crear, listar y editar en la misma página.
+- Se agregó navegación Cotizaciones | Clientes en ambas páginas.
