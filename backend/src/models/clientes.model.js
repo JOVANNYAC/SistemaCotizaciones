@@ -6,6 +6,11 @@ function obtenerTodos() {
     return db.prepare("SELECT * FROM clientes ORDER BY id").all();
 }
 
+// Obtener un cliente por id
+function obtenerPorId(id) {
+    return db.prepare("SELECT * FROM clientes WHERE id = ?").get(id);
+}
+
 // Crear un nuevo cliente
 function crear(cliente) {
 
@@ -20,5 +25,6 @@ function crear(cliente) {
 // Exportamos las funciones del modelo
 export default {
     obtenerTodos,
+    obtenerPorId,
     crear
 };

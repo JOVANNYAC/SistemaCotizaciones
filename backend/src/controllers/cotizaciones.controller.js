@@ -1,4 +1,6 @@
 import cotizacionesModel from "../models/cotizaciones.model.js";
+import clientesModel from "../models/clientes.model.js";
+import { generarPdfCotizacion } from "../services/pdf.service.js";
 
 export const obtenerCotizaciones = (req, res) => {
 
@@ -51,5 +53,23 @@ export const crearCotizacion = (req, res) => {
         mensaje: "Cotización creada correctamente",
         cotizacion: nuevaCotizacion
     });
+
+};
+
+export const descargarPdfCotizacion = (req, res) => {
+
+    const id = Number(req.params.id);
+
+    const cotizacion = cotizacionesModel.obtenerPorId(id);
+
+    if (!cotizacion) {
+        return res.status(404).json({
+            mensaje: "Cotización no encontrada"
+        });
+    }
+
+    const cliente = clientesModel.obtenerPorId(cotizacion.clienteId);
+
+    generarPdfCotizacion(cotizacion, cliente, res);
 
 };

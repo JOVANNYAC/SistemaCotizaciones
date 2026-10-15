@@ -14,6 +14,18 @@ function obtenerTodas() {
     }));
 }
 
+// Obtener una cotización por id
+function obtenerPorId(id) {
+    const fila = db.prepare("SELECT * FROM cotizaciones WHERE id = ?").get(id);
+    if (!fila) {
+        return null;
+    }
+    return {
+        ...fila,
+        items: JSON.parse(fila.items)
+    };
+}
+
 // Crear una nueva cotización con cálculo automático
 function crear(datos) {
     const itemsNormalizados = datos.items.map((item) => {
@@ -50,6 +62,7 @@ function crear(datos) {
 // Exportamos las funciones del modelo
 export default {
     obtenerTodas,
+    obtenerPorId,
     crear
 };
 

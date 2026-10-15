@@ -32,3 +32,12 @@
 - Se migró `clientes.model.js` de arreglo en memoria a `SELECT` e `INSERT` con placeholders `?`.
 - Se migró `cotizaciones.model.js` conservando cálculo map/reduce + IVA 16%, guardando `items` como JSON y usando `AUTOINCREMENT`.
 - Verificación funcional: tras reiniciar el servidor, GET /cotizaciones conserva la cotización id 1 con total 4640. La BD local `*.db` no se sube a Git.
+
+### Fase 3: Generación de PDF
+
+- Se instaló `pdfkit@^0.20.2` para generar PDF sin dependencias pesadas.
+- Se agregó `obtenerPorId` en `cotizaciones.model.js` y `clientes.model.js` con `SELECT ... WHERE id = ?`.
+- Se creó `backend/src/services/pdf.service.js` que genera documento con folio, fecha, cliente, conceptos y totales y lo envía con `Content-Type: application/pdf`.
+- Se agregó `descargarPdfCotizacion` en el controlador con manejo 404 si no existe.
+- Se expuso `GET /cotizaciones/:id/pdf` para descargar como `cotizacion-ID.pdf`.
+- Verificación funcional: GET /cotizaciones/1/pdf descarga y visualiza datos correctos. Plantilla queda pendiente de mejora futura.
