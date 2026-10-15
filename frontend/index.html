@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cotizaciones</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        h1, h2 { color: #1a73e8; }
+        form, .lista { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, select, button { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        button { background: #1a73e8; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button.secundario { background: #34a853; width: auto; padding: 5px 10px; }
+        .item { border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; }
+        .cotizacion { border-bottom: 1px solid #eee; padding: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Cotizaciones</h1>
+
+    <h2>Crear cotización</h2>
+    <form id="form-cotizacion">
+        <label for="cliente">Cliente:</label>
+        <select id="cliente" required></select>
+
+        <div id="items">
+            <div class="item">
+                <label>Descripción:</label>
+                <input type="text" class="descripcion" value="Cemento 50kg" required>
+                <label>Cantidad:</label>
+                <input type="number" class="cantidad" value="10" min="1" required>
+                <label>Precio:</label>
+                <input type="number" class="precio" value="250" min="0" step="0.01" required>
+            </div>
+        </div>
+
+        <button type="button" id="agregar-item" class="secundario">+ Agregar otro concepto</button>
+        <button type="submit">Guardar cotización</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <h2>Historial de cotizaciones</h2>
+    <div id="lista" class="lista"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

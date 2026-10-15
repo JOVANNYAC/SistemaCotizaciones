@@ -41,3 +41,10 @@
 - Se agregó `descargarPdfCotizacion` en el controlador con manejo 404 si no existe.
 - Se expuso `GET /cotizaciones/:id/pdf` para descargar como `cotizacion-ID.pdf`.
 - Verificación funcional: GET /cotizaciones/1/pdf descarga y visualiza datos correctos. Plantilla queda pendiente de mejora futura.
+
+### Fase 4: Formulario frontend
+
+- Se creó `frontend/index.html` con formulario de cliente+items y lista de historial con botón PDF.
+- Se creó `frontend/app.js` con fetch a /clientes, /cotizaciones y descarga de PDF.
+- Se sirvió frontend desde Express con `express.static` sin romper la API.
+- Verificación funcional: http://localhost:3000/ muestra formulario e historial. Diseño pendiente de adaptación futura.
