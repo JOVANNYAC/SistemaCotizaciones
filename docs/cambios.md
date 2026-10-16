@@ -56,3 +56,11 @@
 - Se expuso `PUT /clientes/:id` para editar con 400/404, y `POST` ahora devuelve 201.
 - Se creó `frontend/clientes.html` y `frontend/clientes.js` con crear, listar y editar en la misma página.
 - Se agregó navegación Cotizaciones | Clientes en ambas páginas.
+
+### Fase 6: Enfoque móvil 4 módulos
+
+- Se creó `frontend/home.html` con 4 iconos táctiles: Cotización, Clientes, Trabajos, Pendientes.
+- Se creó `frontend/cotizaciones.html` + `frontend/cotizaciones.js` con buscador por folio/cliente/concepto y filtro por cliente.
+- Se crearon placeholders `frontend/trabajos.html` y `frontend/pendientes.html` para reservar módulos.
+- Se actualizó navegación a Inicio + 4 módulos en clientes.
+- Verificación funcional: home muestra 4 iconos, filtro cotizaciones funciona. Detalles de diseño pendientes.

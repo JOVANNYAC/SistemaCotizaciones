@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizaciones - Sistema de Cotizaciones</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        h1, h2 { color: #1a73e8; }
+        nav a { margin-right: 15px; }
+        form, .lista { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, select, button { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        button { background: #1a73e8; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button.secundario { background: #34a853; width: auto; padding: 5px 10px; }
+        .item { border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; }
+        .cotizacion { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .filtros { display: flex; gap: 10px; }
+        .filtros input, .filtros select { flex: 1; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="home.html">🏠 Inicio</a>
+        <a href="cotizaciones.html">Cotizaciones</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="trabajos.html">Trabajos</a>
+        <a href="pendientes.html">Pendientes</a>
+    </nav>
+    <h1>Cotizaciones</h1>
+
+    <h2>Crear cotización</h2>
+    <form id="form-cotizacion">
+        <label for="cliente">Cliente:</label>
+        <select id="cliente" required></select>
+
+        <div id="items">
+            <div class="item">
+                <label>Descripción:</label>
+                <input type="text" class="descripcion" value="Cemento 50kg" required>
+                <label>Cantidad:</label>
+                <input type="number" class="cantidad" value="10" min="1" required>
+                <label>Precio:</label>
+                <input type="number" class="precio" value="250" min="0" step="0.01" required>
+            </div>
+        </div>
+
+        <button type="button" id="agregar-item" class="secundario">+ Agregar otro concepto</button>
+        <button type="submit">Guardar cotización</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <h2>Listado y búsqueda</h2>
+    <div class="filtros">
+        <input type="text" id="buscar" placeholder="Buscar por folio, cliente o concepto...">
+        <select id="filtro-cliente">
+            <option value="">Todos los clientes</option>
+        </select>
+    </div>
+    <div id="lista" class="lista"></div>
+
+    <script src="cotizaciones.js"></script>
+</body>
+</html>

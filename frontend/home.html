@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Sistema de Cotizaciones</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 15px; background: #f5f5f5; }
+        h1 { color: #1a73e8; text-align: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .modulo { background: white; border-radius: 12px; padding: 25px 10px; text-align: center; text-decoration: none; color: #333; border: 1px solid #ddd; }
+        .modulo:active { background: #e8f0fe; }
+        .icono { font-size: 40px; display: block; }
+        .nombre { font-size: 16px; margin-top: 10px; display: block; }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Cotizaciones</h1>
+    <div class="grid">
+        <a class="modulo" href="cotizaciones.html">
+            <span class="icono">📄</span>
+            <span class="nombre">Cotización</span>
+        </a>
+        <a class="modulo" href="clientes.html">
+            <span class="icono">👥</span>
+            <span class="nombre">Clientes</span>
+        </a>
+        <a class="modulo" href="trabajos.html">
+            <span class="icono">🛠️</span>
+            <span class="nombre">Trabajos realizados</span>
+        </a>
+        <a class="modulo" href="pendientes.html">
+            <span class="icono">✅</span>
+            <span class="nombre">Pendientes</span>
+        </a>
+    </div>
+</body>
+</html>
