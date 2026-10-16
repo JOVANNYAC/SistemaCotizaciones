@@ -3,6 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import clientesRoutes from "./routes/clientes.routes.js";
 import cotizacionesRoutes from "./routes/cotizaciones.routes.js";
+import trabajosRoutes from "./routes/trabajos.routes.js";
+import pendientesRoutes from "./routes/pendientes.routes.js";
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use(express.static(rutaFrontend));
 
 app.use("/clientes", clientesRoutes);
 app.use("/cotizaciones", cotizacionesRoutes);
+app.use("/trabajos", trabajosRoutes);
+app.use("/pendientes", pendientesRoutes);
 
 const PORT = 3000;
 

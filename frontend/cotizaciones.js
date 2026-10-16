@@ -75,6 +75,7 @@ function pintarCotizaciones() {
 function descargarPdf(id) {
     window.open(`http://localhost:3000/cotizaciones/${id}/pdf`, "_blank");
 }
+window.descargarPdf = descargarPdf;
 
 // Agregar otro item al formulario
 document.getElementById("agregar-item").addEventListener("click", () => {

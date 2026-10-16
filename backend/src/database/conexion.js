@@ -47,6 +47,34 @@ db.exec(`
     )
 `);
 
+// Crear tabla trabajos si no existe
+// Un trabajo puede nacer de una cotización o ser directo de un cliente
+db.exec(`
+    CREATE TABLE IF NOT EXISTS trabajos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        clienteId INTEGER NOT NULL,
+        cotizacionId INTEGER DEFAULT NULL,
+        descripcion TEXT NOT NULL,
+        estado TEXT NOT NULL DEFAULT 'pendiente_por_cotizar',
+        total REAL NOT NULL DEFAULT 0,
+        fecha TEXT NOT NULL
+    )
+`);
+
+// Crear tabla pendientes si no existe
+// Lista to-do vinculada opcionalmente a cliente, cotización o trabajo
+db.exec(`
+    CREATE TABLE IF NOT EXISTS pendientes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        titulo TEXT NOT NULL,
+        clienteId INTEGER DEFAULT NULL,
+        cotizacionId INTEGER DEFAULT NULL,
+        trabajoId INTEGER DEFAULT NULL,
+        completado INTEGER NOT NULL DEFAULT 0,
+        fecha TEXT NOT NULL
+    )
+`);
+
 // Insertar clientes de ejemplo solo si la tabla está vacía
 const totalClientes = db.prepare("SELECT COUNT(*) AS total FROM clientes").get().total;
 if (totalClientes === 0) {

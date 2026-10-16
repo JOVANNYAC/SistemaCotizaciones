@@ -6,9 +6,16 @@
     <title>Pendientes - Sistema de Cotizaciones</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; }
-        h1 { color: #1a73e8; }
+        h1, h2 { color: #1a73e8; }
         nav a { margin-right: 15px; }
-        .caja { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        form, .lista { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, select, button { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        button { background: #1a73e8; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button.secundario { background: #34a853; width: auto; padding: 5px 8px; margin: 2px; }
+        button.peligro { background: #d93025; width: auto; padding: 5px 8px; margin: 2px; }
+        .pendiente { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .hecho { text-decoration: line-through; color: #777; }
     </style>
 </head>
 <body>
@@ -20,9 +27,24 @@
         <a href="pendientes.html">Pendientes</a>
     </nav>
     <h1>✅ Pendientes</h1>
-    <div class="caja">
-        <p>Próximo paso: lista to-do vinculada a cliente, cotización o trabajo.</p>
-        <p>Por ahora esta pantalla es un placeholder para reservar el módulo.</p>
-    </div>
+
+    <h2>Crear pendiente</h2>
+    <form id="form-pendiente">
+        <label for="titulo">Tarea:</label>
+        <input type="text" id="titulo" placeholder="Ej. Llamar para cobrar folio 1" required>
+        <label for="cliente">Cliente (opcional):</label>
+        <select id="cliente"><option value="">Sin cliente</option></select>
+        <label for="cotizacion">Cotización (opcional):</label>
+        <select id="cotizacion"><option value="">Sin cotización</option></select>
+        <label for="trabajo">Trabajo (opcional):</label>
+        <select id="trabajo"><option value="">Sin trabajo</option></select>
+        <button type="submit">Guardar pendiente</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <h2>Lista to-do</h2>
+    <div id="lista" class="lista"></div>
+
+    <script src="pendientes.js"></script>
 </body>
 </html>

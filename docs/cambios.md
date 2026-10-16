@@ -64,3 +64,13 @@
 - Se crearon placeholders `frontend/trabajos.html` y `frontend/pendientes.html` para reservar módulos.
 - Se actualizó navegación a Inicio + 4 módulos en clientes.
 - Verificación funcional: home muestra 4 iconos, filtro cotizaciones funciona. Detalles de diseño pendientes.
+
+### Fase 7: Trabajos y pendientes vinculados
+
+- Se creó tabla `trabajos` con clienteId, cotizacionId, descripcion, estado y total.
+- Se creó API `GET/POST /trabajos` y `PUT /trabajos/:id/estado` con 4 estados.
+- Se creó tabla `pendientes` to-do con titulo y vínculos opcionales a cliente/cotización/trabajo.
+- Se creó API `GET/POST/PUT/DELETE /pendientes`.
+- Se crearon `trabajos.html/js` y `pendientes.html/js` con crear, filtrar, cambiar estado y eliminar.
+- Se corrigieron funciones globales window.* y manejo robusto con response.ok y try/catch.
+- Verificación funcional: tras reiniciar servidor, trabajos y pendientes crean y listan correctamente.

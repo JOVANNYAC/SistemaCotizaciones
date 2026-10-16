@@ -6,9 +6,17 @@
     <title>Trabajos - Sistema de Cotizaciones</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; }
-        h1 { color: #1a73e8; }
+        h1, h2 { color: #1a73e8; }
         nav a { margin-right: 15px; }
-        .caja { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        form, .lista { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, select, button { padding: 8px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        button { background: #1a73e8; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button.secundario { background: #34a853; width: auto; padding: 5px 5px; margin: 2px; }
+        .trabajo { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .estado { display: inline-block; padding: 3px 8px; border-radius: 10px; background: #eee; font-size: 12px; }
+        .filtros { display: flex; gap: 10px; }
+        .filtros select { flex: 1; }
     </style>
 </head>
 <body>
@@ -20,9 +28,50 @@
         <a href="pendientes.html">Pendientes</a>
     </nav>
     <h1>🛠️ Trabajos realizados</h1>
-    <div class="caja">
-        <p>Próximo paso: trabajos vinculados a cliente y cotización, con estado por cobrar / facturado / cobrado.</p>
-        <p>Por ahora esta pantalla es un placeholder para reservar el módulo.</p>
+
+    <h2>Crear trabajo</h2>
+    <form id="form-trabajo">
+        <label for="cliente">Cliente:</label>
+        <select id="cliente" required></select>
+
+        <label for="cotizacion">Cotización vinculada (opcional):</label>
+        <select id="cotizacion">
+            <option value="">Sin cotización - trabajo directo</option>
+        </select>
+
+        <label for="descripcion">Descripción del trabajo:</label>
+        <input type="text" id="descripcion" placeholder="Ej. Instalación eléctrica local" required>
+
+        <label for="estado">Estado:</label>
+        <select id="estado">
+            <option value="pendiente_por_cotizar">Pendiente por cotizar</option>
+            <option value="por_cobrar">Por cobrar</option>
+            <option value="facturado">Facturado</option>
+            <option value="cobrado">Cobrado</option>
+        </select>
+
+        <label for="total">Total (si eliges cotización se copia solo):</label>
+        <input type="number" id="total" value="0" min="0" step="0.01">
+
+        <button type="submit">Guardar trabajo</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <h2>Listado</h2>
+    <div class="filtros">
+        <select id="filtro-estado">
+            <option value="">Todos los estados</option>
+            <option value="pendiente_por_cotizar">Pendiente por cotizar</option>
+            <option value="por_cobrar">Por cobrar</option>
+            <option value="facturado">Facturado</option>
+            <option value="cobrado">Cobrado</option>
+        </select>
+        <select id="filtro-cliente">
+            <option value="">Todos los clientes</option>
+        </select>
     </div>
+    <div id="lista" class="lista"></div>
+
+    <script src="trabajos.js"></script>
 </body>
 </html>

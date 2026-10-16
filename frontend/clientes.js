@@ -39,6 +39,7 @@ async function editarCliente(id) {
     document.getElementById("btn-guardar").textContent = "Actualizar cliente";
     document.getElementById("btn-cancelar").style.display = "inline-block";
 }
+window.editarCliente = editarCliente;
 
 function cancelarEdicion() {
     idEnEdicion = null;
